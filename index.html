@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Cwb-api by dryman</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Cwb-api</h1>
+        <h2></h2>
+        <a href="https://github.com/dryman/CWB-API" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>Taiwan Central Weather Bruno APIs</h1>
+
+<h2>Forecasts</h2>
+
+<p><code>http://www.cwb.gov.tw/wwwgis/kml/auth_36.xml</code></p>
+
+<h3>Response</h3>
+
+<pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;ForecastData&gt;
+    &lt;PublishTime&gt;2012/10/23 04:34:24&lt;/PublishTime&gt;
+    &lt;ForecastTime&gt;2012/10/23 05:00&lt;/ForecastTime&gt;
+    &lt;ForecastPer1 Type="TD" Name="今日"&gt;
+            &lt;From&gt;2012-10-23 06:00:00&lt;/From&gt;
+            &lt;To&gt;2012-10-23 18:00:00&lt;/To&gt;
+    &lt;/ForecastPer1&gt;
+    &lt;ForecastPer2 Type="TN" Name="今晚"&gt;
+            &lt;From&gt;2012-10-23 18:00:00&lt;/From&gt;
+            &lt;To&gt;2012-10-24 06:00:00&lt;/To&gt;
+    &lt;/ForecastPer2&gt;
+    &lt;ForecastPer3 Type="TM" Name="明日"&gt;
+            &lt;From&gt;2012-10-24 06:00:00&lt;/From&gt;
+            &lt;To&gt;2012-10-24 18:00:00&lt;/To&gt;
+    &lt;/ForecastPer3&gt;
+    &lt;Area name="基隆北海岸" type="N" FWeek_area="東北部地區" FTravel_area="陽明山,龍洞"&gt;
+            &lt;Data&gt;
+                    &lt;TempL&gt;20&lt;/TempL&gt;
+                    &lt;TempH&gt;26&lt;/TempH&gt;
+                    &lt;Weather&gt;陰短暫雨&lt;/Weather&gt;
+                    &lt;ImageIdx&gt;wea26.gif&lt;/ImageIdx&gt;
+                    &lt;POP&gt;80&lt;/POP&gt;
+                    &lt;CI&gt;舒適&lt;/CI&gt;
+            &lt;/Data&gt;
+            &lt;Data&gt;
+                    &lt;TempL&gt;20&lt;/TempL&gt;
+                    &lt;TempH&gt;23&lt;/TempH&gt;
+                    &lt;Weather&gt;陰短暫雨&lt;/Weather&gt;
+                    &lt;ImageIdx&gt;wea26.gif&lt;/ImageIdx&gt;
+                    &lt;POP&gt;40&lt;/POP&gt;
+                    &lt;CI&gt;稍有寒意至舒適&lt;/CI&gt;
+            &lt;/Data&gt;
+</code></pre>
+
+<h2>County ID and Town ID mapping</h2>
+
+<p><code>http://app.cwb.gov.tw/ws/feed2.php?userid=1b8df2a02611e9ec1aac&amp;type=1</code></p>
+
+<pre><code>{
+      'Areas' =&gt; [
+                   {
+                     'town' =&gt; {
+                                 'CountyName' =&gt; 基隆市,
+                                 'TownshipID' =&gt; 1001701,
+                                 'CountyID' =&gt; 10017
+                               }
+                   },
+                   {
+                     'town' =&gt; {
+                                 'CountyName' =&gt; 臺北市,
+                                 'TownshipID' =&gt; 6300200,
+                                 'CountyID' =&gt; 63000
+                               }
+                   },
+                   {
+                     'town' =&gt; {
+                                 'CountyName' =&gt; 新北市,
+                                 'TownshipID' =&gt; 6500001,
+                                 'CountyID' =&gt; 65000
+                               }
+                   },
+                   {
+                     'town' =&gt; {
+                                 'CountyName' =&gt; 桃園縣,
+                                 'TownshipID' =&gt; 1000301,
+                                 'CountyID' =&gt; 10003
+                               }
+                   },
+                   {
+                     'town' =&gt; {
+                                 'CountyName' =&gt; 新竹市,
+                                 'TownshipID' =&gt; 1001802,
+                                 'CountyID' =&gt; 10018
+                               }
+                   },
+                   {
+                     'town' =&gt; {
+                                 'CountyName' =&gt; 新竹縣,
+                                 'TownshipID' =&gt; 1000401,
+                                 'CountyID' =&gt; 10004
+                               }
+                   },
+                   {
+                     'town' =&gt; {
+                                 'CountyName' =&gt; 苗栗縣,
+                                 'TownshipID' =&gt; 1000501,
+                                 'CountyID' =&gt; 10005
+                               }
+                   },
+                   {
+                     'town' =&gt; {
+                                 'CountyName' =&gt; 臺中市,
+                                 'TownshipID' =&gt; 6600004,
+                                 'CountyID' =&gt; 66000
+                               }
+                   },
+                   {
+                     'town' =&gt; {
+                                 'CountyName' =&gt; 彰化縣,
+                                 'TownshipID' =&gt; 1000701,
+                                 'CountyID' =&gt; 10007
+                               }
+                   },
+                   {
+                     'town' =&gt; {
+                                 'CountyName' =&gt; 南投縣,
+                                 'TownshipID' =&gt; 1000801,
+                                 'CountyID' =&gt; 10008
+                               }
+                   },
+                   {
+                     'town' =&gt; {
+                                 'CountyName' =&gt; 雲林縣,
+                                 'TownshipID' =&gt; 1000901,
+                                 'CountyID' =&gt; 10009
+                               }
+                   },
+                   {
+                     'town' =&gt; {
+                                 'CountyName' =&gt; 嘉義市,
+                                 'TownshipID' =&gt; 1002001,
+                                 'CountyID' =&gt; 10020
+                               }
+                   },
+                   {
+                     'town' =&gt; {
+                                 'CountyName' =&gt; 嘉義縣,
+                                 'TownshipID' =&gt; 1001001,
+                                 'CountyID' =&gt; 10010
+                               }
+                   },
+                   {
+                     'town' =&gt; {
+                                 'CountyName' =&gt; 臺南市,
+                                 'TownshipID' =&gt; 6700036,
+                                 'CountyID' =&gt; 67000
+                               }
+                   },
+                   {
+                     'town' =&gt; {
+                                 'CountyName' =&gt; 高雄市,
+                                 'TownshipID' =&gt; 6400800,
+                                 'CountyID' =&gt; 64000
+                               }
+                   },
+                   {
+                     'town' =&gt; {
+                                 'CountyName' =&gt; 屏東縣,
+                                 'TownshipID' =&gt; 1001301,
+                                 'CountyID' =&gt; 10013
+                               }
+                   },
+                   {
+                     'town' =&gt; {
+                                 'CountyName' =&gt; 臺東縣,
+                                 'TownshipID' =&gt; 1001401,
+                                 'CountyID' =&gt; 10014
+                               }
+                   },
+                   {
+                     'town' =&gt; {
+                                 'CountyName' =&gt; 花蓮縣,
+                                 'TownshipID' =&gt; 1001501,
+                                 'CountyID' =&gt; 10015
+                               }
+                   },
+                   {
+                     'town' =&gt; {
+                                 'CountyName' =&gt; 宜蘭縣,
+                                 'TownshipID' =&gt; 1000201,
+                                 'CountyID' =&gt; 10002
+                               }
+                   },
+                   {
+                     'town' =&gt; {
+                                 'CountyName' =&gt; 澎湖縣,
+                                 'TownshipID' =&gt; 1001601,
+                                 'CountyID' =&gt; 10016
+                               }
+                   },
+                   {
+                     'town' =&gt; {
+                                 'CountyName' =&gt; 金門縣,
+                                 'TownshipID' =&gt; 902001,
+                                 'CountyID' =&gt; 9020
+                               }
+                   },
+                   {
+                     'town' =&gt; {
+                                 'CountyName' =&gt; 連江縣,
+                                 'TownshipID' =&gt; 900701,
+                                 'CountyID' =&gt; 9007
+                               }
+                   }
+                 ]
+    }
+</code></pre>
+
+<h2>Weekly Forecast</h2>
+
+<p><code>http://app.cwb.gov.tw/ws/feed.php?userid=f9845dae54a3b9247582&amp;type=4&amp;townid=1001701</code></p>
+
+<p><code>townid=</code> uses <strong>County ID and Town ID mapping</strong> listed above.</p>
+
+<h3>Response</h3>
+
+<pre><code>{
+"Areas": [
+  {
+    "town_3hr": {
+      "Data_date": "10/23", 
+      "Day_night": "12:00", 
+      "MaxT": "26", 
+      "MinT": "26", 
+      "PoP": "80", 
+      "TownshipID": "1001701", 
+      "Wx_Icon": "26"
+    }
+  }, 
+  {
+    "town_3hr": {
+      "Data_date": "10/23", 
+      "Day_night": "15:00", 
+      "MaxT": "26", 
+      "MinT": "26", 
+      "PoP": "80", 
+      "TownshipID": "1001701", 
+      "Wx_Icon": "26"
+    }
+  }, 
+  {
+    "town_3hr": {
+      "Data_date": "10/23", 
+      "Day_night": "18:00", 
+      "MaxT": "23", 
+      "MinT": "23", 
+      "PoP": "40", 
+      "TownshipID": "1001701", 
+      "Wx_Icon": "26"
+    }
+  }, 
+  {
+    "town_3hr": {
+      "Data_date": "10/23", 
+      "Day_night": "21:00", 
+      "MaxT": "22", 
+      "MinT": "22", 
+      "PoP": "40", 
+      "TownshipID": "1001701", 
+      "Wx_Icon": "26"
+    }
+  }, 
+  {
+    "town_week": {
+      "Data_date": "10/24", 
+      "Day_night": " \u767d\u5929", 
+      "MaxT": "27", 
+      "MinT": "20", 
+      "PoP": "30", 
+      "TownshipID": "1001701", 
+      "Wx_Icon": "26"
+    }
+  }, 
+  {
+    "town_week": {
+      "Data_date": "10/24", 
+      "Day_night": " \u665a\u4e0a", 
+      "MaxT": "24", 
+      "MinT": "21", 
+      "PoP": "10", 
+      "TownshipID": "1001701", 
+      "Wx_Icon": "02"
+    }
+  }, 
+  {
+    "town_week": {
+      "Data_date": "10/25", 
+      "Day_night": " \u767d\u5929", 
+      "MaxT": "28", 
+      "MinT": "21", 
+      "PoP": "10", 
+      "TownshipID": "1001701", 
+      "Wx_Icon": "02"
+    }
+  }, 
+  {
+    "town_week": {
+      "Data_date": "10/25", 
+      "Day_night": " \u665a\u4e0a", 
+      "MaxT": "24", 
+      "MinT": "21", 
+      "PoP": "", 
+      "TownshipID": "1001701", 
+      "Wx_Icon": "02"
+    }
+</code></pre>
+
+<h2>Detailed Forecast</h2>
+
+<p><code>http://app.cwb.gov.tw/ws/feed.php?userid=f9845dae54a3b9247582&amp;type=5&amp;townid=6300200</code></p>
+
+<p><code>townid=</code> uses <strong>County ID and Town ID mapping</strong> listed above.</p>
+
+<h3>Response</h3>
+
+<pre><code>{
+  "Areas": [
+    {
+      "town": {
+        "Data_date": "10/23", 
+        "Day_night": "06:00", 
+        "PoP": "60", 
+        "T": "20", 
+        "TownshipID": "6300200", 
+        "Wx_Icon": "26"
+      }
+    }, 
+    {
+      "town": {
+        "Data_date": "10/23", 
+        "Day_night": "09:00", 
+        "PoP": "60", 
+        "T": "23", 
+        "TownshipID": "6300200", 
+        "Wx_Icon": "26"
+      }
+    }, 
+</code></pre>
+
+<ul>
+<li>
+<code>T</code> refers to temperture</li>
+<li>
+<code>PoP</code> refers to probability of raining</li>
+</ul><h2>Coastal Area alert</h2>
+
+<ul>
+<li><code>GET http://www.cwb.gov.tw/wwwgis/kml/auth_nearsea.xml</code></li>
+<li><code>content-type: xml</code></li>
+<li><code>status: 200 ok</code></li>
+</ul><h3>Response:</h3>
+
+<pre><code>  &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+  &lt;ForecastData&gt;
+    &lt;PublishTime&gt;2012/10/23 03:52:05&lt;/PublishTime&gt;
+    &lt;ForecastTime&gt;2012/10/23 04:30:00&lt;/ForecastTime&gt;
+    &lt;ForecastPer&gt;
+      &lt;From&gt;2012/10/23 06:00&lt;/From&gt;
+      &lt;To&gt;2012/10/24 06:00&lt;/To&gt;
+    &lt;/ForecastPer&gt;
+    &lt;Area name="安平高雄沿海"&gt;
+      &lt;Data&gt;
+        &lt;Weather&gt;晴時多雲&lt;/Weather&gt;
+        &lt;ImageIdx&gt;wea08.gif&lt;/ImageIdx&gt;
+        &lt;WindDir&gt;偏北風&lt;/WindDir&gt;
+        &lt;WindLevel&gt;4級陣風6級以下下午轉4至5陣風7級&lt;/WindLevel&gt;
+        &lt;WaveType&gt;小波轉中浪&lt;/WaveType&gt;
+        &lt;WaveHeight&gt;1轉2公尺&lt;/WaveHeight&gt;
+      &lt;/Data&gt;
+    &lt;/Area&gt;
+    ...
+  &lt;/ForecastData&gt;
+</code></pre>
+
+<h3>Area Names</h3>
+
+<ul>
+<li>安平高雄沿海</li>
+<li>宜蘭蘇澳沿海</li>
+<li>彭佳嶼基隆海</li>
+<li>成功大武沿海</li>
+<li>新竹鹿港沿海</li>
+<li>東石安平沿海</li>
+<li>枋寮恆春沿海</li>
+<li>澎湖海面</li>
+<li>綠島蘭嶼海面</li>
+<li>花蓮沿海</li>
+<li>金門海面</li>
+<li>釣魚台海面</li>
+<li>馬祖海面</li>
+<li>高雄枋寮沿海</li>
+<li>鵝鑾鼻沿海</li>
+<li>鹿港東石沿海</li>
+</ul><h2>Tide</h2>
+
+<ul>
+<li><code>GET http://www.cwb.gov.tw/wwwgis/kml/auth_nearsea.xml</code></li>
+<li><code>content-type: xml</code></li>
+<li><code>status: 200 ok</code></li>
+</ul><h3>Response</h3>
+
+<pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;ForecastData&gt;
+        &lt;Station name="石門"&gt;
+                &lt;Data day="2012/10/23" moonday="09/09" weekday="星期二"&gt;
+                        &lt;Tide type="滿潮"&gt;
+                                &lt;time&gt;04:22&lt;/time&gt;
+                                &lt;height&gt;58.6&lt;/height&gt;
+                        &lt;/Tide&gt;
+                        &lt;Tide type="乾潮"&gt;
+                                &lt;time&gt;11:06&lt;/time&gt;
+                                &lt;height&gt;-74.1&lt;/height&gt;
+                        &lt;/Tide&gt;
+                        &lt;Tide type="滿潮"&gt;
+                                &lt;time&gt;17:34&lt;/time&gt;
+                                &lt;height&gt;81.1&lt;/height&gt;
+                        &lt;/Tide&gt;
+                &lt;/Data&gt;
+                &lt;Data day="2012/10/24" moonday="09/10" weekday="星期三"&gt;
+                        &lt;Tide type="乾潮"&gt;
+                                &lt;time&gt;00:20&lt;/time&gt;
+                                &lt;height&gt;-40.0&lt;/height&gt;
+                        &lt;/Tide&gt;
+                        &lt;Tide type="滿潮"&gt;
+                                &lt;time&gt;05:47&lt;/time&gt;
+                                &lt;height&gt;61.1&lt;/height&gt;
+                        &lt;/Tide&gt;
+                        &lt;Tide type="乾潮"&gt;
+                                &lt;time&gt;12:27&lt;/time&gt;
+                                &lt;height&gt;-67.6&lt;/height&gt;
+                        &lt;/Tide&gt;
+                        &lt;Tide type="滿潮"&gt;
+                                &lt;time&gt;18:42&lt;/time&gt;
+                                &lt;height&gt;81.1&lt;/height&gt;
+                        &lt;/Tide&gt;
+                &lt;/Data&gt;
+         ....
+</code></pre>
+
+<h3>Station names</h3>
+
+<ul>
+<li>石門</li>
+<li>基隆</li>
+<li>淡水</li>
+<li>大園</li>
+<li>新竹</li>
+<li>苗栗</li>
+<li>梧棲</li>
+<li>王功</li>
+<li>台西</li>
+<li>東石</li>
+<li>將軍</li>
+<li>安平</li>
+<li>高雄</li>
+<li>東港</li>
+<li>南灣</li>
+<li>台東</li>
+<li>成功</li>
+<li>花蓮</li>
+<li>蘇澳</li>
+<li>頭城</li>
+<li>福隆</li>
+<li>鼻頭角</li>
+<li>馬祖</li>
+<li>金門</li>
+<li>澎湖</li>
+<li>蘭嶼</li>
+</ul><h2>Fish areas</h2>
+
+<p><code>http://app.cwb.gov.tw/ws/feed2.php?userid=1b8df2a02611e9ec1aac&amp;type=9</code></p>
+
+<pre><code>{
+      'Areas' =&gt; [
+                   {
+                     'info' =&gt; {
+                                 'SubType' =&gt; '01',
+                                 'cname' =&gt; 彭佳嶼基隆海面
+                               }
+                   },
+                   {
+                     'info' =&gt; {
+                                 'SubType' =&gt; '02',
+                                 'cname' =&gt; 釣魚台海面
+                               }
+                   },
+                   {
+                     'info' =&gt; {
+                                 'SubType' =&gt; '03',
+                                 'cname' =&gt; 新竹鹿港沿海
+                               }
+                   },
+                   {
+                     'info' =&gt; {
+                                 'SubType' =&gt; '04',
+                                 'cname' =&gt; 鹿港東石沿海
+                               }
+                   },
+                   {
+                     'info' =&gt; {
+                                 'SubType' =&gt; '05',
+                                 'cname' =&gt; 東石安平沿海
+                               }
+                   },
+                   {
+                     'info' =&gt; {
+                                 'SubType' =&gt; '06',
+                                 'cname' =&gt; 安平高雄沿海
+                               }
+                   },
+                   {
+                     'info' =&gt; {
+                                 'SubType' =&gt; '07',
+                                 'cname' =&gt; 高雄枋寮沿海
+                               }
+                   },
+                   {
+                     'info' =&gt; {
+                                 'SubType' =&gt; '08',
+                                 'cname' =&gt; 枋寮恆春沿海
+                               }
+                   },
+                   {
+                     'info' =&gt; {
+                                 'SubType' =&gt; '09',
+                                 'cname' =&gt; 鵝鑾鼻沿海
+                               }
+                   },
+                   {
+                     'info' =&gt; {
+                                 'SubType' =&gt; 10,
+                                 'cname' =&gt; 成功大武沿海
+                               }
+                   },
+                   {
+                     'info' =&gt; {
+                                 'SubType' =&gt; 11,
+                                 'cname' =&gt; 綠島蘭嶼海面
+                               }
+                   },
+                   {
+                     'info' =&gt; {
+                                 'SubType' =&gt; 12,
+                                 'cname' =&gt; 花蓮沿海
+                               }
+                   },
+                   {
+                     'info' =&gt; {
+                                 'SubType' =&gt; 13,
+                                 'cname' =&gt; 宜蘭蘇澳沿海
+                               }
+                   },
+                   {
+                     'info' =&gt; {
+                                 'SubType' =&gt; 14,
+                                 'cname' =&gt; 澎湖海面
+                               }
+                   },
+                   {
+                     'info' =&gt; {
+                                 'SubType' =&gt; 15,
+                                 'cname' =&gt; 馬祖海面
+                               }
+                   },
+                   {
+                     'info' =&gt; {
+                                 'SubType' =&gt; 16,
+                                 'cname' =&gt; 金門海面
+                               }
+                   }
+                 ]
+    };
+</code></pre>
+
+<h2>Coastal Area (JSON)</h2>
+
+<p><code>http://app.cwb.gov.tw/ws/feed2.php?userid=1b8df2a02611e9ec1aac&amp;type=A&amp;area=01</code></p>
+
+<p>Note: parameter of <code>area=</code> is one of fish area number above</p>
+
+<h3>result</h3>
+
+<pre><code>    {
+      'Areas' =&gt; [
+                   {
+                     'forecasts' =&gt; {
+                                      'WindDir' =&gt; 東北轉偏東風,
+                                      'WaveType' =&gt; 小浪轉大浪,
+                                      'Image' =&gt; 26,
+                                      'Weather' =&gt; 陰時多雲局部陣雨,
+                                      'Cname' =&gt; 彭佳嶼基隆海面,
+                                      'To_Time' =&gt; '10/24 06:00',
+                                      'WaveHeight' =&gt; 1轉3公尺,
+                                      'From_Time' =&gt; '10/23 06:00',
+                                      'WindLevel' =&gt; 4級陣風6級以下上午轉5至6陣風8級,
+                                      'Issue_Time' =&gt; '10/23 04:30'
+                                    }
+                   }
+                 ]
+    };
+</code></pre>
+
+<h2>Tides (JSON)</h2>
+
+<p><code>http://app.cwb.gov.tw/ws/feed2.php?userid=1b8df2a02611e9ec1aac&amp;type=B&amp;area=01&amp;day=1</code></p>
+
+<p>Note: parameter of <code>area=</code> is one of fish area number above, and <code>day=</code> is either <code>1</code>, <code>2</code>, or <code>3</code>.</p>
+
+<h3>result</h3>
+
+<pre><code>    {
+      'Areas' =&gt; [
+                   {
+                     'dayinfo' =&gt; {
+                                    'Week' =&gt; 二,
+                                    'FcstDate' =&gt; '10/23',
+                                    'MoonDate' =&gt; '09/09'
+                                  }
+                   },
+                   {
+                     'forecasts' =&gt; {
+                                      'Time' =&gt; '08:11',
+                                      'Station' =&gt; 貢寮,
+                                      'Height' =&gt; -22,
+                                      'Style' =&gt; 乾潮
+                                    }
+                   },
+                   {
+                     'forecasts' =&gt; {
+                                      'Time' =&gt; '16:01',
+                                      'Station' =&gt; 貢寮,
+                                      'Height' =&gt; 34,
+                                      'Style' =&gt; 滿潮
+                                    }
+                   },
+                    ...
+                 ]
+    }
+</code></pre>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/dryman/CWB-API/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/dryman/CWB-API/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/dryman/CWB-API"></a> is maintained by <a href="https://github.com/dryman">dryman</a>.</p>
+
+          <p>This page was generated by <a href="pages.github.com">GitHub Pages</a> using the Architect theme by <a href="http://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
