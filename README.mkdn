@@ -1,0 +1,631 @@
+# Taiwan Central Weather Bruno APIs
+
+## Forecasts
+
+`http://www.cwb.gov.tw/wwwgis/kml/auth_36.xml`
+
+### Response
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <ForecastData>
+        <PublishTime>2012/10/23 04:34:24</PublishTime>
+        <ForecastTime>2012/10/23 05:00</ForecastTime>
+        <ForecastPer1 Type="TD" Name="今日">
+                <From>2012-10-23 06:00:00</From>
+                <To>2012-10-23 18:00:00</To>
+        </ForecastPer1>
+        <ForecastPer2 Type="TN" Name="今晚">
+                <From>2012-10-23 18:00:00</From>
+                <To>2012-10-24 06:00:00</To>
+        </ForecastPer2>
+        <ForecastPer3 Type="TM" Name="明日">
+                <From>2012-10-24 06:00:00</From>
+                <To>2012-10-24 18:00:00</To>
+        </ForecastPer3>
+        <Area name="基隆北海岸" type="N" FWeek_area="東北部地區" FTravel_area="陽明山,龍洞">
+                <Data>
+                        <TempL>20</TempL>
+                        <TempH>26</TempH>
+                        <Weather>陰短暫雨</Weather>
+                        <ImageIdx>wea26.gif</ImageIdx>
+                        <POP>80</POP>
+                        <CI>舒適</CI>
+                </Data>
+                <Data>
+                        <TempL>20</TempL>
+                        <TempH>23</TempH>
+                        <Weather>陰短暫雨</Weather>
+                        <ImageIdx>wea26.gif</ImageIdx>
+                        <POP>40</POP>
+                        <CI>稍有寒意至舒適</CI>
+                </Data>
+
+
+## County ID and Town ID mapping
+
+`http://app.cwb.gov.tw/ws/feed2.php?userid=1b8df2a02611e9ec1aac&type=1`
+
+    {
+          'Areas' => [
+                       {
+                         'town' => {
+                                     'CountyName' => 基隆市,
+                                     'TownshipID' => 1001701,
+                                     'CountyID' => 10017
+                                   }
+                       },
+                       {
+                         'town' => {
+                                     'CountyName' => 臺北市,
+                                     'TownshipID' => 6300200,
+                                     'CountyID' => 63000
+                                   }
+                       },
+                       {
+                         'town' => {
+                                     'CountyName' => 新北市,
+                                     'TownshipID' => 6500001,
+                                     'CountyID' => 65000
+                                   }
+                       },
+                       {
+                         'town' => {
+                                     'CountyName' => 桃園縣,
+                                     'TownshipID' => 1000301,
+                                     'CountyID' => 10003
+                                   }
+                       },
+                       {
+                         'town' => {
+                                     'CountyName' => 新竹市,
+                                     'TownshipID' => 1001802,
+                                     'CountyID' => 10018
+                                   }
+                       },
+                       {
+                         'town' => {
+                                     'CountyName' => 新竹縣,
+                                     'TownshipID' => 1000401,
+                                     'CountyID' => 10004
+                                   }
+                       },
+                       {
+                         'town' => {
+                                     'CountyName' => 苗栗縣,
+                                     'TownshipID' => 1000501,
+                                     'CountyID' => 10005
+                                   }
+                       },
+                       {
+                         'town' => {
+                                     'CountyName' => 臺中市,
+                                     'TownshipID' => 6600004,
+                                     'CountyID' => 66000
+                                   }
+                       },
+                       {
+                         'town' => {
+                                     'CountyName' => 彰化縣,
+                                     'TownshipID' => 1000701,
+                                     'CountyID' => 10007
+                                   }
+                       },
+                       {
+                         'town' => {
+                                     'CountyName' => 南投縣,
+                                     'TownshipID' => 1000801,
+                                     'CountyID' => 10008
+                                   }
+                       },
+                       {
+                         'town' => {
+                                     'CountyName' => 雲林縣,
+                                     'TownshipID' => 1000901,
+                                     'CountyID' => 10009
+                                   }
+                       },
+                       {
+                         'town' => {
+                                     'CountyName' => 嘉義市,
+                                     'TownshipID' => 1002001,
+                                     'CountyID' => 10020
+                                   }
+                       },
+                       {
+                         'town' => {
+                                     'CountyName' => 嘉義縣,
+                                     'TownshipID' => 1001001,
+                                     'CountyID' => 10010
+                                   }
+                       },
+                       {
+                         'town' => {
+                                     'CountyName' => 臺南市,
+                                     'TownshipID' => 6700036,
+                                     'CountyID' => 67000
+                                   }
+                       },
+                       {
+                         'town' => {
+                                     'CountyName' => 高雄市,
+                                     'TownshipID' => 6400800,
+                                     'CountyID' => 64000
+                                   }
+                       },
+                       {
+                         'town' => {
+                                     'CountyName' => 屏東縣,
+                                     'TownshipID' => 1001301,
+                                     'CountyID' => 10013
+                                   }
+                       },
+                       {
+                         'town' => {
+                                     'CountyName' => 臺東縣,
+                                     'TownshipID' => 1001401,
+                                     'CountyID' => 10014
+                                   }
+                       },
+                       {
+                         'town' => {
+                                     'CountyName' => 花蓮縣,
+                                     'TownshipID' => 1001501,
+                                     'CountyID' => 10015
+                                   }
+                       },
+                       {
+                         'town' => {
+                                     'CountyName' => 宜蘭縣,
+                                     'TownshipID' => 1000201,
+                                     'CountyID' => 10002
+                                   }
+                       },
+                       {
+                         'town' => {
+                                     'CountyName' => 澎湖縣,
+                                     'TownshipID' => 1001601,
+                                     'CountyID' => 10016
+                                   }
+                       },
+                       {
+                         'town' => {
+                                     'CountyName' => 金門縣,
+                                     'TownshipID' => 902001,
+                                     'CountyID' => 9020
+                                   }
+                       },
+                       {
+                         'town' => {
+                                     'CountyName' => 連江縣,
+                                     'TownshipID' => 900701,
+                                     'CountyID' => 9007
+                                   }
+                       }
+                     ]
+        }
+
+## Weekly Forecast
+
+`http://app.cwb.gov.tw/ws/feed.php?userid=f9845dae54a3b9247582&type=4&townid=1001701`
+
+`townid=` uses **County ID and Town ID mapping** listed above.
+
+### Response
+
+    {
+    "Areas": [
+      {
+        "town_3hr": {
+          "Data_date": "10/23", 
+          "Day_night": "12:00", 
+          "MaxT": "26", 
+          "MinT": "26", 
+          "PoP": "80", 
+          "TownshipID": "1001701", 
+          "Wx_Icon": "26"
+        }
+      }, 
+      {
+        "town_3hr": {
+          "Data_date": "10/23", 
+          "Day_night": "15:00", 
+          "MaxT": "26", 
+          "MinT": "26", 
+          "PoP": "80", 
+          "TownshipID": "1001701", 
+          "Wx_Icon": "26"
+        }
+      }, 
+      {
+        "town_3hr": {
+          "Data_date": "10/23", 
+          "Day_night": "18:00", 
+          "MaxT": "23", 
+          "MinT": "23", 
+          "PoP": "40", 
+          "TownshipID": "1001701", 
+          "Wx_Icon": "26"
+        }
+      }, 
+      {
+        "town_3hr": {
+          "Data_date": "10/23", 
+          "Day_night": "21:00", 
+          "MaxT": "22", 
+          "MinT": "22", 
+          "PoP": "40", 
+          "TownshipID": "1001701", 
+          "Wx_Icon": "26"
+        }
+      }, 
+      {
+        "town_week": {
+          "Data_date": "10/24", 
+          "Day_night": " \u767d\u5929", 
+          "MaxT": "27", 
+          "MinT": "20", 
+          "PoP": "30", 
+          "TownshipID": "1001701", 
+          "Wx_Icon": "26"
+        }
+      }, 
+      {
+        "town_week": {
+          "Data_date": "10/24", 
+          "Day_night": " \u665a\u4e0a", 
+          "MaxT": "24", 
+          "MinT": "21", 
+          "PoP": "10", 
+          "TownshipID": "1001701", 
+          "Wx_Icon": "02"
+        }
+      }, 
+      {
+        "town_week": {
+          "Data_date": "10/25", 
+          "Day_night": " \u767d\u5929", 
+          "MaxT": "28", 
+          "MinT": "21", 
+          "PoP": "10", 
+          "TownshipID": "1001701", 
+          "Wx_Icon": "02"
+        }
+      }, 
+      {
+        "town_week": {
+          "Data_date": "10/25", 
+          "Day_night": " \u665a\u4e0a", 
+          "MaxT": "24", 
+          "MinT": "21", 
+          "PoP": "", 
+          "TownshipID": "1001701", 
+          "Wx_Icon": "02"
+        }
+
+## Detailed Forecast
+
+`http://app.cwb.gov.tw/ws/feed.php?userid=f9845dae54a3b9247582&type=5&townid=6300200`
+
+`townid=` uses **County ID and Town ID mapping** listed above.
+
+### Response
+
+    {
+      "Areas": [
+        {
+          "town": {
+            "Data_date": "10/23", 
+            "Day_night": "06:00", 
+            "PoP": "60", 
+            "T": "20", 
+            "TownshipID": "6300200", 
+            "Wx_Icon": "26"
+          }
+        }, 
+        {
+          "town": {
+            "Data_date": "10/23", 
+            "Day_night": "09:00", 
+            "PoP": "60", 
+            "T": "23", 
+            "TownshipID": "6300200", 
+            "Wx_Icon": "26"
+          }
+        }, 
+
+* `T` refers to temperture
+* `PoP` refers to probability of raining
+
+
+## Coastal Area alert
+
+* `GET http://www.cwb.gov.tw/wwwgis/kml/auth_nearsea.xml`
+* `content-type: xml`
+* `status: 200 ok`
+
+### Response:
+
+      <?xml version="1.0" encoding="UTF-8"?>
+      <ForecastData>
+        <PublishTime>2012/10/23 03:52:05</PublishTime>
+        <ForecastTime>2012/10/23 04:30:00</ForecastTime>
+        <ForecastPer>
+          <From>2012/10/23 06:00</From>
+          <To>2012/10/24 06:00</To>
+        </ForecastPer>
+        <Area name="安平高雄沿海">
+          <Data>
+            <Weather>晴時多雲</Weather>
+            <ImageIdx>wea08.gif</ImageIdx>
+            <WindDir>偏北風</WindDir>
+            <WindLevel>4級陣風6級以下下午轉4至5陣風7級</WindLevel>
+            <WaveType>小波轉中浪</WaveType>
+            <WaveHeight>1轉2公尺</WaveHeight>
+          </Data>
+        </Area>
+        ...
+      </ForecastData>
+
+### Area Names
+
+* 安平高雄沿海
+* 宜蘭蘇澳沿海
+* 彭佳嶼基隆海
+* 成功大武沿海
+* 新竹鹿港沿海
+* 東石安平沿海
+* 枋寮恆春沿海
+* 澎湖海面
+* 綠島蘭嶼海面
+* 花蓮沿海
+* 金門海面
+* 釣魚台海面
+* 馬祖海面
+* 高雄枋寮沿海
+* 鵝鑾鼻沿海
+* 鹿港東石沿海
+
+## Tide
+
+* `GET http://www.cwb.gov.tw/wwwgis/kml/auth_nearsea.xml`
+* `content-type: xml`
+* `status: 200 ok`
+
+### Response
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <ForecastData>
+            <Station name="石門">
+                    <Data day="2012/10/23" moonday="09/09" weekday="星期二">
+                            <Tide type="滿潮">
+                                    <time>04:22</time>
+                                    <height>58.6</height>
+                            </Tide>
+                            <Tide type="乾潮">
+                                    <time>11:06</time>
+                                    <height>-74.1</height>
+                            </Tide>
+                            <Tide type="滿潮">
+                                    <time>17:34</time>
+                                    <height>81.1</height>
+                            </Tide>
+                    </Data>
+                    <Data day="2012/10/24" moonday="09/10" weekday="星期三">
+                            <Tide type="乾潮">
+                                    <time>00:20</time>
+                                    <height>-40.0</height>
+                            </Tide>
+                            <Tide type="滿潮">
+                                    <time>05:47</time>
+                                    <height>61.1</height>
+                            </Tide>
+                            <Tide type="乾潮">
+                                    <time>12:27</time>
+                                    <height>-67.6</height>
+                            </Tide>
+                            <Tide type="滿潮">
+                                    <time>18:42</time>
+                                    <height>81.1</height>
+                            </Tide>
+                    </Data>
+             ....
+
+### Station names
+
+* 石門
+* 基隆
+* 淡水
+* 大園
+* 新竹
+* 苗栗
+* 梧棲
+* 王功
+* 台西
+* 東石
+* 將軍
+* 安平
+* 高雄
+* 東港
+* 南灣
+* 台東
+* 成功
+* 花蓮
+* 蘇澳
+* 頭城
+* 福隆
+* 鼻頭角
+* 馬祖
+* 金門
+* 澎湖
+* 蘭嶼
+
+## Fish areas
+
+`http://app.cwb.gov.tw/ws/feed2.php?userid=1b8df2a02611e9ec1aac&type=9`
+
+    {
+          'Areas' => [
+                       {
+                         'info' => {
+                                     'SubType' => '01',
+                                     'cname' => 彭佳嶼基隆海面
+                                   }
+                       },
+                       {
+                         'info' => {
+                                     'SubType' => '02',
+                                     'cname' => 釣魚台海面
+                                   }
+                       },
+                       {
+                         'info' => {
+                                     'SubType' => '03',
+                                     'cname' => 新竹鹿港沿海
+                                   }
+                       },
+                       {
+                         'info' => {
+                                     'SubType' => '04',
+                                     'cname' => 鹿港東石沿海
+                                   }
+                       },
+                       {
+                         'info' => {
+                                     'SubType' => '05',
+                                     'cname' => 東石安平沿海
+                                   }
+                       },
+                       {
+                         'info' => {
+                                     'SubType' => '06',
+                                     'cname' => 安平高雄沿海
+                                   }
+                       },
+                       {
+                         'info' => {
+                                     'SubType' => '07',
+                                     'cname' => 高雄枋寮沿海
+                                   }
+                       },
+                       {
+                         'info' => {
+                                     'SubType' => '08',
+                                     'cname' => 枋寮恆春沿海
+                                   }
+                       },
+                       {
+                         'info' => {
+                                     'SubType' => '09',
+                                     'cname' => 鵝鑾鼻沿海
+                                   }
+                       },
+                       {
+                         'info' => {
+                                     'SubType' => 10,
+                                     'cname' => 成功大武沿海
+                                   }
+                       },
+                       {
+                         'info' => {
+                                     'SubType' => 11,
+                                     'cname' => 綠島蘭嶼海面
+                                   }
+                       },
+                       {
+                         'info' => {
+                                     'SubType' => 12,
+                                     'cname' => 花蓮沿海
+                                   }
+                       },
+                       {
+                         'info' => {
+                                     'SubType' => 13,
+                                     'cname' => 宜蘭蘇澳沿海
+                                   }
+                       },
+                       {
+                         'info' => {
+                                     'SubType' => 14,
+                                     'cname' => 澎湖海面
+                                   }
+                       },
+                       {
+                         'info' => {
+                                     'SubType' => 15,
+                                     'cname' => 馬祖海面
+                                   }
+                       },
+                       {
+                         'info' => {
+                                     'SubType' => 16,
+                                     'cname' => 金門海面
+                                   }
+                       }
+                     ]
+        };
+
+## Coastal Area (JSON)
+
+`http://app.cwb.gov.tw/ws/feed2.php?userid=1b8df2a02611e9ec1aac&type=A&area=01`
+
+Note: parameter of `area=` is one of fish area number above
+
+### result
+
+        {
+          'Areas' => [
+                       {
+                         'forecasts' => {
+                                          'WindDir' => 東北轉偏東風,
+                                          'WaveType' => 小浪轉大浪,
+                                          'Image' => 26,
+                                          'Weather' => 陰時多雲局部陣雨,
+                                          'Cname' => 彭佳嶼基隆海面,
+                                          'To_Time' => '10/24 06:00',
+                                          'WaveHeight' => 1轉3公尺,
+                                          'From_Time' => '10/23 06:00',
+                                          'WindLevel' => 4級陣風6級以下上午轉5至6陣風8級,
+                                          'Issue_Time' => '10/23 04:30'
+                                        }
+                       }
+                     ]
+        };
+
+## Tides (JSON)
+
+`http://app.cwb.gov.tw/ws/feed2.php?userid=1b8df2a02611e9ec1aac&type=B&area=01&day=1`
+
+Note: parameter of `area=` is one of fish area number above, and `day=` is either `1`, `2`, or `3`.
+
+### result
+
+        {
+          'Areas' => [
+                       {
+                         'dayinfo' => {
+                                        'Week' => 二,
+                                        'FcstDate' => '10/23',
+                                        'MoonDate' => '09/09'
+                                      }
+                       },
+                       {
+                         'forecasts' => {
+                                          'Time' => '08:11',
+                                          'Station' => 貢寮,
+                                          'Height' => -22,
+                                          'Style' => 乾潮
+                                        }
+                       },
+                       {
+                         'forecasts' => {
+                                          'Time' => '16:01',
+                                          'Station' => 貢寮,
+                                          'Height' => 34,
+                                          'Style' => 滿潮
+                                        }
+                       },
+                        ...
+                     ]
+        }
+
+
