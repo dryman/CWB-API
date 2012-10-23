@@ -371,7 +371,52 @@
 <code>T</code> refers to temperture</li>
 <li>
 <code>PoP</code> refers to probability of raining</li>
-</ul><h2>Coastal Area alert</h2>
+</ul><h2>3 hour forecast</h2>
+
+<p><code>http://app.cwb.gov.tw/ws/feed2.php?userid=1b8df2a02611e9ec1aac&amp;type=6&amp;townid=6300200</code></p>
+
+<p><code>townid=</code> uses <strong>County ID and Town ID mapping</strong> listed above.</p>
+
+<h3>Response</h3>
+
+<pre><code>"Areas": [
+  {
+    "town_newest": {
+      "Time": "12:00", 
+      "Wx": "\u77ed\u66ab\u96e8", 
+      "Wx_Icon": "26"
+    }
+  }, 
+  {
+    "town_current": {
+      "DataTime": "10/23 09:00", 
+      "Rain": "0.0", 
+      "Temp": "23"
+    }
+  }, 
+  {
+    "town_3hr": {
+      "Day": "10/23", 
+      "Hour": "12", 
+      "MaxT": "26", 
+      "MinT": "26", 
+      "PoP": "60", 
+      "Wx_Icon": "26"
+    }
+  }, 
+  {
+    "town_3hr": {
+      "Day": "10/23", 
+      "Hour": "15", 
+      "MaxT": "26", 
+      "MinT": "26", 
+      "PoP": "60", 
+      "Wx_Icon": "26"
+    }
+  },
+</code></pre>
+
+<h2>Coastal Area alert</h2>
 
 <ul>
 <li><code>GET http://www.cwb.gov.tw/wwwgis/kml/auth_nearsea.xml</code></li>
@@ -666,6 +711,83 @@
                  ]
     }
 </code></pre>
+
+<h2>CWB Stations</h2>
+
+<p><code>http://www.cwb.gov.tw/wwwgis/kml/auth_obs.xml</code></p>
+
+<h3>Response</h3>
+
+<pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;StationData&gt;
+        &lt;StatusCode&gt;
+                &lt;code id="0"&gt;無觀測&lt;/code&gt;
+                &lt;code id="1"&gt;正常&lt;/code&gt;
+                &lt;code id="2"&gt;儀器調校中&lt;/code&gt;
+                &lt;code id="3"&gt;儀器故障&lt;/code&gt;
+                &lt;code id="4"&gt;儀器因雷擊受損&lt;/code&gt;
+        &lt;/StatusCode&gt;
+        &lt;PublishTime&gt;2012/10/23 10:20:10&lt;/PublishTime&gt;
+        &lt;Station id='46695' name='彭佳嶼' status='1' longitude='122.0794928012751' latitude='25.62760583977913' altitude='101.655' F36_area='基隆北海岸' area='N' FWeek_area='東北部地區' FTravel_area=''&gt;
+                &lt;obstime value='2012/10/23 10:15:00'&gt;
+                        &lt;winddir status='1'&gt;東北&lt;/winddir&gt;
+                        &lt;wind status='1'&gt;6&lt;/wind&gt;
+                        &lt;wind_ms status='1'&gt;11.7&lt;/wind_ms&gt;
+                        &lt;gust status='1'&gt;9&lt;/gust&gt;
+                        &lt;gust_ms status='1'&gt;21.0&lt;/gust_ms&gt;
+                        &lt;vis status='1'&gt;-&lt;/vis&gt;
+                        &lt;temp status='1'&gt;21.1&lt;/temp&gt;
+                        &lt;humidity status='1'&gt;81&lt;/humidity&gt;
+                        &lt;press status='1'&gt;1018.7&lt;/press&gt;
+                        &lt;rain status='1'&gt;1.5&lt;/rain&gt;
+                        &lt;weather&gt;X&lt;/weather&gt;
+                        &lt;gifmap&gt;wea99.gif&lt;/gifmap&gt;
+                        &lt;uvi status='0' obstime=''&gt;&lt;/uvi&gt;
+                        &lt;thismonth_mean status='1'&gt;
+                                &lt;meantxmax&gt;25.9&lt;/meantxmax&gt;
+                                &lt;meantxmin&gt;22.1&lt;/meantxmin&gt;
+                                &lt;precp&gt;136.8&lt;/precp&gt;
+                        &lt;/thismonth_mean&gt;
+                &lt;/obstime&gt;
+        &lt;/Station&gt;
+</code></pre>
+
+<h2>Query station data</h2>
+
+<p><code>http://app.cwb.gov.tw/ws/feed2.php?userid=1b8df2a02611e9ec1aac&amp;type=4&amp;stid=46695</code></p>
+
+<p>Use CWB stations xml to get list of <code>stid</code>s.</p>
+
+<h3>Response</h3>
+
+<pre><code>    {
+      'Areas' =&gt; [
+                   {
+                     'real' =&gt; {
+                                 'Humidity' =&gt; 81,
+                                 'meanmonth' =&gt; 10,
+                                 'Wind' =&gt; '11.7',
+                                 'WindDir' =&gt; 東北,
+                                 'WindScale' =&gt; 6,
+                                 'Weather' =&gt; '-',
+                                 'Obstime' =&gt; '10/23 10:15:00',
+                                 'Stname' =&gt; 彭佳嶼,
+                                 'meantxmax' =&gt; '25.9',
+                                 'Temperature' =&gt; '21.1',
+                                 'Stid' =&gt; 46695,
+                                 'gifmap' =&gt; 99,
+                                 'Rain' =&gt; '1.5',
+                                 'precp' =&gt; '136.8',
+                                 'meantxmin' =&gt; '22.1'
+                               }
+                   }
+                 ]
+    };
+</code></pre>
+
+<h2>Disaster Warnings</h2>
+
+<p><code>http://www.cwb.gov.tw/wwwgis/kml/warning_data.xml</code></p>
         </section>
 
         <aside id="sidebar">
